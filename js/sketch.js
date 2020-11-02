@@ -13,19 +13,9 @@ let pheobe;
 let sad;
 let sensitive;
 let toast;
-let check;
-let check1;
-let check2;
-let check3;
-let check4;
-let check5;
-let check6;
-let check7;
-let check8;
-let check9;
+let yes;
 let imgs = [];
 let randomImage;
-let quiz;
 
 function preload(){
   for (let i=0; i<13; i++) {
@@ -48,23 +38,92 @@ function preload(){
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
-  background(0);
+  background(40,50,20);
   imageMode(CENTER);
 
-  buttonAsk = createButton("damn that's crazy");
-  buttonAsk.position(400,400);
-  buttonAsk.mousePressed(ask);
+  buttonAsk1 = createButton("time to take your quiz");
+  buttonAsk1.position(50,100);
+  buttonAsk1.mousePressed(ask);
 
 }
 
 function ask(){
-  if (buttonAsk.mousePressed()){
-    buttonAsk.mousePressed(draw)
+  if (buttonAsk1.mousePressed()){
+    buttonAsk2 = createButton("question #1");
+    buttonAsk2.position(500,200);
+    buttonAsk2.mousePressed(mousePressed);
+  }
+}
+function mousePressed(){
+  if (buttonAsk2.mousePressed()) {
+      fill(0);
+      text("are you happy in life?", 500, 250);
 
+      check = createCheckbox('yes', false);
+	    check.position(520, 270);
+      check.changed(checkChanged);
+
+      check1 = createCheckbox('no', false);
+      check1.position(570, 270);
+      check1.changed(checkChanged);
+    }
 }
-function draw(){
-  randomImage = int(random(imgs.length));
-  background(0);
-  image(imgs[randomImage], windowWidth/2, windowHeight/2);
+
+function checkChanged(){
+  if (check.checked() || check1.checked()){
+    buttonAsk3 = createButton("question #2");
+    buttonAsk3.position(120, 300);
+    buttonAsk3.mousePressed(click);
+  }
 }
+
+function click(){
+  if (buttonAsk3.mousePressed()){
+    fill(0);
+    text("have you internalized your misogyny yet today?", 120, 350);
+
+    check2 = createCheckbox('of course', false);
+    check2.position(125, 360);
+    check2.changed(tres);
+
+    check3 = createCheckbox('no sorry', false);
+    check3.position(210, 360);
+    check3.changed(tres);
+
+  }
+}
+
+function tres() {
+  if(check2.checked() || check3.checked()){
+    buttonAsk4 = createButton("question #3");
+    buttonAsk4.position(400,400);
+    buttonAsk4.mousePressed(last);
+  }
+}
+
+function last(){
+  if (buttonAsk4.mousePressed()){
+    fill(0);
+    text("do you love me?", 400, 445);
+
+    check4 = createCheckbox('obviously, you are the one, true, all-knowing being', false);
+    check4.position(420,460);
+    check4.changed(agh);
+  }
+}
+
+function agh(){
+  if (check4.checked()){
+    buttonAsk = createButton("click to get your #moodaf");
+    buttonAsk.position(600,500);
+  }
+}
+//function draw(){
+    //randomImage = int(random(imgs.length));
+    //background(40,50,20);
+  //  image(imgs[randomImage], windowWidth/2, windowHeight/2);
+//}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
 }
