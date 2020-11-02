@@ -44,7 +44,6 @@ function setup(){
   buttonAsk1 = createButton("time to take your quiz");
   buttonAsk1.position(50,100);
   buttonAsk1.mousePressed(ask);
-
 }
 
 function ask(){
