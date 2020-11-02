@@ -47,14 +47,14 @@ function setup(){
 }
 
 function ask(){
-  if (buttonAsk1.mousePressed()){
+
     buttonAsk2 = createButton("question #1");
     buttonAsk2.position(500,200);
-    buttonAsk2.mousePressed(mousePressed);
-  }
+    buttonAsk2.mousePressed(mousePressed2);
+
 }
-function mousePressed(){
-  if (buttonAsk2.mousePressed()) {
+function mousePressed2(){
+
       fill(0);
       text("are you happy in life?", 500, 250);
 
@@ -65,7 +65,7 @@ function mousePressed(){
       check1 = createCheckbox('no', false);
       check1.position(570, 270);
       check1.changed(checkChanged);
-    }
+
 }
 
 function checkChanged(){
@@ -77,7 +77,7 @@ function checkChanged(){
 }
 
 function click(){
-  if (buttonAsk3.mousePressed()){
+
     fill(0);
     text("have you internalized your misogyny yet today?", 120, 350);
 
@@ -89,7 +89,7 @@ function click(){
     check3.position(210, 360);
     check3.changed(tres);
 
-  }
+
 }
 
 function tres() {
@@ -101,27 +101,31 @@ function tres() {
 }
 
 function last(){
-  if (buttonAsk4.mousePressed()){
+
     fill(0);
     text("do you love me?", 400, 445);
 
     check4 = createCheckbox('obviously, you are the one, true, all-knowing being', false);
     check4.position(420,460);
     check4.changed(agh);
-  }
+
 }
 
 function agh(){
   if (check4.checked()){
     buttonAsk = createButton("click to get your #moodaf");
     buttonAsk.position(600,500);
+    buttonAsk.mousePressed(draw);
   }
 }
-//function draw(){
-    //randomImage = int(random(imgs.length));
-    //background(40,50,20);
-  //  image(imgs[randomImage], windowWidth/2, windowHeight/2);
-//}
+
+function draw(){
+    if (buttonAsk.mousePressed(randomImage)){
+    randomImage = int(random(imgs.length));
+    background(40,50,20);
+    image(imgs[randomImage], windowWidth/2, windowHeight/2);
+  }
+}
 
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
